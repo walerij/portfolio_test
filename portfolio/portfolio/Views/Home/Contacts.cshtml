@@ -1,0 +1,40 @@
+﻿@model IEnumerable<portfolio.Models.Contacts>
+@{
+    ViewBag.Title = "Contacts";
+}
+
+<h2>Contacts</h2>
+<div class="container">
+    <diw class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.param)</th>
+                        <th>@Html.DisplayNameFor(model => model.value)</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach (var contact in Model) { 
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(Cont => contact.param)
+                        </td>
+                        <td>
+                          <strong>@Html.DisplayFor(Cont => contact.value)
+                              </strong>
+                        </td>
+
+                    </tr>
+                   }
+                  
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4"></div>
+
+    </diw>
+</div>
+

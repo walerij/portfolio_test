@@ -1,0 +1,68 @@
+﻿@model portfolio.Models.Works
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="/scripts/jquery.unobtrusive-ajax.js"></script>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            @Model.title
+        </div>
+        <div class="panel-body">
+            <img src="@Model.link" style="height:400px" alt="big-picture">
+            <h1>
+                <strong>@Model.title</strong>
+            </h1>
+            <h2>@Model.topic.title</h2>
+            <div class="jumbotron">
+              @Model.info
+            </div>
+            <div class="row" id="picture-row">
+              @foreach (var photo in Model.photos)
+              { <a href="@Url.Action("ReturnPictureForPart","Home",new {id=photo.id })" data-toggle="modal" title="@photo.info" class="imgItem">
+                    <img src="@photo.link" style="height:150px" alt="small-picture">
+                </a>
+				 
+			
+			  }
+
+
+				<script type="text/javascript">
+
+					$(function () {
+						$.ajaxSetup({ cache: false });
+						$(".imgItem").click(function (e) {
+							e.preventDefault();
+							
+							$.get(this.href, function (data) {
+								$(".modal-content").html(data);
+								$("#myModal").modal('show');
+							});
+						});
+					});
+				</script>
+				
+				
+              
+                <!-- HTML-код модального окна -->
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Заголовок модального окна -->
+                            
+                            <!-- Футер модального окна -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div><!--окончание модального окна-->
+			 
+
+
+            </div><!--окончание строки с фотографиями-->
+        </div><!---окончание panel-body-->
+    </div><!---окончание panel-primary-->
+</div>
+
+
+

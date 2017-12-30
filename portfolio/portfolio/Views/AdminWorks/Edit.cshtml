@@ -1,0 +1,54 @@
+﻿@model portfolio.Models.Works
+@{
+    ViewBag.Title = "Работа "+Model.title;
+}
+<h1>&nbsp;</h1>
+@using (Html.BeginForm())
+{ 
+<table class="table table-hover">
+    <tr>
+       
+        @Html.HiddenFor(workTopic => Model.topics_id)
+        @Html.HiddenFor(workTopicName => Model.topic.title)
+        @Html.HiddenFor(workId => Model.id)
+    </tr>
+    <tr>
+        <td>Заголовок</td>
+        <td>@Html.TextBoxFor(mTitle => Model.title)</td>
+    </tr>
+    <tr>
+        <td>Информация</td>
+        <td>@Html.TextAreaFor(mInfo => Model.info)</td>
+    </tr>
+    <tr>
+        <td>Главное фото</td>
+        <td>@Html.TextBoxFor(mLink => Model.link)
+        
+          
+        </td>
+
+    </tr>
+    <tr>
+        <td colspan="2">
+           
+        </td>
+        <td colspan="2">
+            <input type="submit" value="Сохранить" class="btn btn-info" />
+            <button type="button" value="Отмена" class="btn btn-danger">Отмена</button>
+        </td> 
+    </tr>
+</table>
+}
+
+<div class="row">
+    <div id="results">
+        @Html.Action("ViewPhoto", Model.id)
+    </div>
+</div>
+<div class="row">
+  
+</div>
+   <!-- <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+       -->
+

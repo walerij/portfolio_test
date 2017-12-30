@@ -1,0 +1,20 @@
+﻿<div>
+    <h2>@ViewBag.FilePath</h2>
+    <img src="@ViewBag.FilePath" alt="no"/>
+    @using (Html.BeginForm("Upload", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table class="table table-responsive">
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="file" name="upload" />
+                    <input type="submit" name="Save" value="Загрузить" />
+                 </td>
+            </tr>
+        </table>
+
+
+    }
+</div>

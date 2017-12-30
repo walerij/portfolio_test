@@ -1,0 +1,44 @@
+﻿@model IEnumerable<portfolio.Models.Works>
+@{
+    ViewBag.Title = "Работы наши";
+}
+
+
+
+
+<h1>Админка для работ</h1>
+@Html.ActionLink("Добавить", "Create")
+<table class="table table-hover">
+    <tr>
+        <th>Заголовок</th>
+        <th>Ссылка</th>
+        <th>Инфо</th>
+        <th>Группа</th>
+        <th>---</th>
+    </tr>
+    @foreach (var work in Model)
+    {
+        <tr>
+            <td>
+               
+                @Html.DisplayFor(workTitle =>work.title)
+            </td>
+
+            <td>
+                @Html.DisplayFor(workLink => work.link)
+            </td>
+
+            <td>
+                @Html.DisplayFor(workInfo => work.info)
+            </td>
+            <td>
+                @Html.DisplayFor(workTopic => work.topic.title)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить","Edit",  new { id = work.id })
+                @Html.ActionLink("Удалить", "Delete",  new { id = work.id })
+                @Html.ActionLink("Фото", "Details", new { id = work.id })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,60 @@
+﻿@model portfolio.Models.Works
+
+<div>
+    <h4>Works</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => Model.topic.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic.title)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => Model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.info)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.link)
+            
+        </dt>
+
+        <dd>           
+            <img src="@Model.link" alt="no" />
+        </dd>
+
+    </dl>
+</div>
+@using (Html.BeginForm("Upload", "AdminWorks", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="row">
+    <div id="results">
+        @Html.Action("ViewPhoto", Model.id)
+    </div>
+</div>
+<div class="row">
+   
+        @Html.HiddenFor(workId => Model.id)
+        <input type="file" name="upload" /><br>
+        <input type="submit" value="Загрузить" />
+   
+</div>
+}
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

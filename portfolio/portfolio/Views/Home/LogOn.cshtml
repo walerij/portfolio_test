@@ -1,0 +1,9 @@
+﻿<h1>Вход пользователя</h1>
+@using (Html.BeginForm())
+{
+	<h2>Логин @Html.TextBox("login")</h2>
+	<h2>Пароль @Html.TextBox("password")</h2>
+	<button type="submit" class="btn btn-info">
+		Войти
+	</button>
+}

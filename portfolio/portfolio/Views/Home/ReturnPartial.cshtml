@@ -1,0 +1,14 @@
+﻿@model IEnumerable<portfolio.Models.Works>
+
+@foreach (var work in Model)
+{
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <a href="/Home/ViewWork/@work.id">
+                <img src="@work.link" alt="picture" class="small_picture" title="подробнее">
+            </a>
+            <h3>@work.title</h3>
+            <p>@work.info</p>
+        </div>
+    </div>
+}
